@@ -1,6 +1,14 @@
 import "bootstrap";
-import { initMapbox } from '../plugins/init_mapbox';
+
+import { Application } from "stimulus"
+import { definitionsFromContext } from "stimulus/webpack-helpers"
+
+const application = Application.start()
+const context = require.context("../controllers", true, /\.js$/)
+application.load(definitionsFromContext(context))
+
+
 import { initSlideoutMenu } from '../plugins/init_slideout_menu';
-import 'mapbox-gl/dist/mapbox-gl.css';
-initMapbox();
+
+
 initSlideoutMenu();
