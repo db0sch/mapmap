@@ -3,6 +3,8 @@
   style="width: 100%;
   height: 100vh;"
   data-controller='map'
+  data-target='filters.map'
+  data-action='change->map#handleChange'
   data-map-markers="<%= @markers.to_json %>"
   data-mapbox-api-key="<%= Rails.application.credentials.mapbox[:access_token] %>"
 ></div>

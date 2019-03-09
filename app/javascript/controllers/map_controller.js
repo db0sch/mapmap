@@ -9,12 +9,18 @@ export default class extends Controller {
   }
 
   setMarkers() {
-    this.markers.forEach(marker => addMarkerToMap(this.map, marker));
+    this.markerInstances = this.markers.map(marker => addMarkerToMap(this.map, marker));
     this.fitBounds();
   }
 
   fitBounds() {
     fitMapToMarkers(this.map, this.markers);
+  }
+
+  handleChange() {
+    console.log(this.map)
+    this.markerInstances.forEach(marker => marker.remove())
+    this.setMarkers();
   }
 
   get markers() {

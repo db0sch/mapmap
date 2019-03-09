@@ -12,24 +12,24 @@
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= stylesheet_pack_tag 'application', media: 'all' %>
   </head>
-  <body>
+  <body data-controller='filters'>
     <nav id="menu">
       <header>
         <h2>Menu</h2>
       </header>
       <section>
-        <%= form_tag(root_path, method: :get) do %>
+        <%= form_tag(root_path, method: :get, remote: true, data: { target: 'filters.form' }) do %>
           <h6>Tags</h6>
           <% Place.tag_counts.pluck(:name).each do |ta| %>
             <div class="form-group form-check">
-              <%= check_box_tag "filters[#{ta.downcase}]", ta, params[:filters]&.include?(ta), class: "form-check-input", name: 'filters[]' %>
+              <%= check_box_tag "filters[#{ta.downcase}]", ta, params[:filters]&.include?(ta), class: "form-check-input", name: 'filters[]', data: { action: 'filters#handleChange' } %>
               <%= label_tag "filters_#{ta.downcase}", ta, class: "form-check-label" %>
             </div>
           <% end %>
           <h6>Locations</h6>
           <% Place.location_counts.pluck(:name).each do |lo| %>
             <div class="form-group form-check">
-              <%= check_box_tag "locations[#{lo.downcase}]", lo, params[:locations]&.include?(lo), class: "form-check-input", name: 'locations[]' %>
+              <%= check_box_tag "locations[#{lo.downcase}]", lo, params[:locations]&.include?(lo), class: "form-check-input", name: 'locations[]', data: { action: 'filters#handleChange' }  %>
               <%= label_tag "locations_#{lo.downcase}", lo, class: "form-check-label" %>
             </div>
           <% end %>

@@ -8,7 +8,7 @@ const fitMapToMarkers = (map, markers) => {
 };
 
 const addMarkerToMap = (map, marker) => {
-  new mapboxgl.Marker().setLngLat([ marker.lng, marker.lat ]).addTo(map);
+  return new mapboxgl.Marker().setLngLat([ marker.lng, marker.lat ]).addTo(map);
 }
 
 const initMapbox = (element) => {
