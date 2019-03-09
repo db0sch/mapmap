@@ -1,0 +1,9 @@
+{
+  "name": "MapMap",
+  "short_name": "MapMap",
+  "start_url": "/",
+  "background_color": "white",
+  "description": "The only map",
+  "display": "standalone",
+  "icons": []
+}
