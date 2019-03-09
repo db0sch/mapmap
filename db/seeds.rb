@@ -13,8 +13,8 @@ places = [
 
 places.each do |place|
   sleep 1
-  pl = Place.create!(place.slice(:name, :address))
-  p pl.latitude
-  p pl.longitude
+  pl = Place.new(place.slice(:name, :address))
+  pl.tag_list.add(place[:tag])
+  pl.save
 end
 
