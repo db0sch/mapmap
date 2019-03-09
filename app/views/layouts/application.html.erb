@@ -17,6 +17,25 @@
       <header>
         <h2>Menu</h2>
       </header>
+      <section>
+        <%= form_tag(root_path, method: :get) do %>
+          <h6>Tags</h6>
+          <% Place.tag_counts.pluck(:name).each do |ta| %>
+            <div class="form-group form-check">
+              <%= check_box_tag "filters[#{ta.downcase}]", ta, params[:filters]&.include?(ta), class: "form-check-input", name: 'filters[]' %>
+              <%= label_tag "filters_#{ta.downcase}", ta, class: "form-check-label" %>
+            </div>
+          <% end %>
+          <h6>Locations</h6>
+          <% Place.location_counts.pluck(:name).each do |lo| %>
+            <div class="form-group form-check">
+              <%= check_box_tag "locations[#{lo.downcase}]", lo, params[:locations]&.include?(lo), class: "form-check-input", name: 'locations[]' %>
+              <%= label_tag "locations_#{lo.downcase}", lo, class: "form-check-label" %>
+            </div>
+          <% end %>
+          <%= submit_tag 'Filter' %>
+        <% end -%>
+      </section>
     </nav>
 
     <main id="panel">
