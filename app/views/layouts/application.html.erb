@@ -13,7 +13,27 @@
     <%= stylesheet_pack_tag 'application', media: 'all' %>
   </head>
   <body>
-    <%= yield %>
+    <nav id="menu">
+      <header>
+        <h2>Menu</h2>
+      </header>
+    </nav>
+
+    <main id="panel">
+      <header>
+        <div class="header-button">
+          <button class="toggle-button">☰</button>
+        </div>
+        <div class="header-search">
+          <%= form_tag("/", {:class => "form"}) do %>
+            <%= text_field_tag :q %>
+          <% end -%>
+        </div>
+      </header>
+      <section>
+        <%= yield %>
+      </section>
+    </main>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
   </body>

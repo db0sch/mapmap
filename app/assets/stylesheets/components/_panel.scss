@@ -1,0 +1,20 @@
+#panel {
+  position: relative;
+}
+
+#panel header {
+  z-index: 1000;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px;
+  display: flex;
+}
+
+.header-search {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
